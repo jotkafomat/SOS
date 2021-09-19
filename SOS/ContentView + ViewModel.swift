@@ -11,7 +11,7 @@ import AVFoundation
 extension ContentView {
     class ViewModel {
         
-        var device: AVCaptureDeviceProtocol?
+        let device: AVCaptureDeviceProtocol?
         
         public init(device: AVCaptureDeviceProtocol? = AVCaptureDevice.default(for: .video)) {
             self.device = device
