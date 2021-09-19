@@ -12,7 +12,21 @@ import XCTest
 
 class AVCaptureDeviceSpy: AVCaptureDeviceProtocol {
     
-    var torchModeOff: XCTestExpectation?
+    let expectedMessage: [AVCaptureDevice.TorchMode]
+    
+    var messageReceived: XCTestExpectation?
+    
+    init(expectedMessage: [AVCaptureDevice.TorchMode]) {
+        self.expectedMessage = expectedMessage
+    }
+    
+    private(set) var actualMessage: [AVCaptureDevice.TorchMode] = [] {
+        didSet {
+            if expectedMessage == actualMessage {
+                messageReceived?.fulfill()
+            }
+        }
+    }
     
     var hasTorch: Bool {
         true
@@ -20,15 +34,11 @@ class AVCaptureDeviceSpy: AVCaptureDeviceProtocol {
     
     var torchMode: AVCaptureDevice.TorchMode = .on {
         didSet {
-            if torchMode == .off {
-                torchModeOff?.fulfill()
-            }
+            actualMessage.append(torchMode)
         }
     }
-    
+
     func lockForConfiguration() throws { }
     
     func unlockForConfiguration() { }
-    
-    
 }

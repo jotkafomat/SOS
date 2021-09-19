@@ -5,29 +5,23 @@
 //  Created by Krzysztof Jankowski on 18/09/2021.
 //
 
+import AVFoundation
 import XCTest
 @testable import SOS
 
 class ContentViewViewModelTests: XCTestCase {
-    
-    func testTurnOnFlash() {
-        let sut = ContentView.ViewModel(device: AVCaptureDeviceMock())
-        XCTAssertEqual(sut.device?.torchMode, .off)
         
-        sut.turnOnFlash()
+    func testWhenSendMessageCalledWithEmptySequenceCaptureDeviceTorchModeDoesntGetSet() {
+        let message = [AVCaptureDevice.TorchMode.on, .off, .on, .on]
+        let avCaptureDeviceSpy = AVCaptureDeviceSpy(expectedMessage: message)
         
-        XCTAssertEqual(sut.device?.torchMode, .on)
-    }
-    
-    func testTurnsFlashOff() {
-        let spyTorchOperator = AVCaptureDeviceSpy()
-        spyTorchOperator.torchModeOff = expectation(description: "torch off")
+        avCaptureDeviceSpy.messageReceived = expectation(description: "Message was received")
         
-        let sut = ContentView.ViewModel(device: spyTorchOperator)
+        let sut = ContentView.ViewModel(device: avCaptureDeviceSpy, signalLength: 0.01)
         
-        sut.turnFlashOff(after: 0)
+        sut.sendMessage(message)
         
-        waitForExpectations(timeout: 0.1)
-        XCTAssertEqual(sut.device?.torchMode, .off)
+        waitForExpectations(timeout: 1)
+        
     }
 }

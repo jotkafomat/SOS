@@ -15,7 +15,6 @@
 		E1921E0026F75B0200EE4D46 /* ContentView + Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1921DFF26F75B0200EE4D46 /* ContentView + Constant.swift */; };
 		E1921E0226F75B5B00EE4D46 /* ContentView + ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1921E0126F75B5B00EE4D46 /* ContentView + ViewModel.swift */; };
 		E1921E0426F75CBD00EE4D46 /* AVCaptureDeviceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1921E0326F75CBD00EE4D46 /* AVCaptureDeviceProtocol.swift */; };
-		E1921E0626F75EBE00EE4D46 /* AVCaptureDeviceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1921E0526F75EBE00EE4D46 /* AVCaptureDeviceMock.swift */; };
 		E1921E0A26F767B700EE4D46 /* AVCaptureDeviceSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1921E0926F767B700EE4D46 /* AVCaptureDeviceSpy.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,7 +41,6 @@
 		E1921DFF26F75B0200EE4D46 /* ContentView + Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView + Constant.swift"; sourceTree = "<group>"; };
 		E1921E0126F75B5B00EE4D46 /* ContentView + ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView + ViewModel.swift"; sourceTree = "<group>"; };
 		E1921E0326F75CBD00EE4D46 /* AVCaptureDeviceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVCaptureDeviceProtocol.swift; sourceTree = "<group>"; };
-		E1921E0526F75EBE00EE4D46 /* AVCaptureDeviceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVCaptureDeviceMock.swift; sourceTree = "<group>"; };
 		E1921E0926F767B700EE4D46 /* AVCaptureDeviceSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVCaptureDeviceSpy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,7 +108,6 @@
 			children = (
 				E1921DF726F6209000EE4D46 /* ContentViewViewModelTests.swift */,
 				E1921DF926F6209000EE4D46 /* Info.plist */,
-				E1921E0526F75EBE00EE4D46 /* AVCaptureDeviceMock.swift */,
 				E1921E0926F767B700EE4D46 /* AVCaptureDeviceSpy.swift */,
 			);
 			path = SOSTests;
@@ -229,7 +226,6 @@
 			files = (
 				E1921DF826F6209000EE4D46 /* ContentViewViewModelTests.swift in Sources */,
 				E1921E0A26F767B700EE4D46 /* AVCaptureDeviceSpy.swift in Sources */,
-				E1921E0626F75EBE00EE4D46 /* AVCaptureDeviceMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
