@@ -18,8 +18,7 @@ struct ContentView: View {
                 .foregroundColor(.blue)
                 .font(.title)
             Button(action: {
-                viewModel.turnOnFlash()
-                viewModel.turnFlashOff()
+                viewModel.toggleFlash()
             }, label: {
                 Image(systemName: Constants.imageSystemName)
                     .padding()

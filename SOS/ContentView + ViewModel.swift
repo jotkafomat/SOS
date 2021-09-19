@@ -5,13 +5,15 @@
 //  Created by Krzysztof Jankowski on 19/09/2021.
 //
 
-import Foundation
 import AVFoundation
+import Combine
+import Foundation
 
 extension ContentView {
     class ViewModel {
         
         let device: AVCaptureDeviceProtocol?
+        var timerCancellable: AnyCancellable?
         
         public init(device: AVCaptureDeviceProtocol? = AVCaptureDevice.default(for: .video)) {
             self.device = device
@@ -44,6 +46,20 @@ extension ContentView {
                     print("Torch could not be used because: \(error.localizedDescription)")
                 }
             }
+        }
+        
+        func toggleFlash() {            
+            timerCancellable = Timer
+                .publish(every: 1, tolerance: 0.1 ,on: .main, in: .common)
+                .autoconnect()
+                .sink { [weak self] _ in
+                    guard let self = self else { return }
+                    if self.device?.torchMode == .off {
+                        self.turnOnFlash()
+                    } else {
+                        self.turnFlashOff(after: 0)
+                    }
+                }
         }
     }
 }
