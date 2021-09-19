@@ -6,16 +6,34 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct ContentView: View {
+    
+    let viewModel: ContentView.ViewModel
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            Text(Constants.titleText)
+                .foregroundColor(.blue)
+                .font(.title)
+            Button(action: {
+                viewModel.turnOnFlash()
+                viewModel.turnFlashOff()
+            }, label: {
+                Image(systemName: Constants.imageSystemName)
+                    .padding()
+                    .background(Color.blue)
+                    .clipShape(Circle())
+                    .font(.largeTitle)
+                    .foregroundColor(.white)
+            })
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(viewModel: ContentView.ViewModel())
     }
 }
