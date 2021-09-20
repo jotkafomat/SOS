@@ -13,6 +13,7 @@ extension ContentView {
     class ViewModel: ObservableObject {
         
         @Published var titleText: String = "Press to send SOS"
+        @Published var sliderValue: Float = 0.5
         
         let device: AVCaptureDeviceProtocol?
         private var timerCancellable: AnyCancellable?
@@ -32,7 +33,7 @@ extension ContentView {
         }
                 
         func sendMessage(_ message: [AVCaptureDevice.TorchMode] = sos) {
-            
+
             let timer = Timer
                 .publish(every: signalLength,tolerance: 0.05 ,on: RunLoop.main, in: .common)
                 .autoconnect()
@@ -46,7 +47,11 @@ extension ContentView {
                     self?.titleText = "Sending SOS"
                     do {
                         try device.lockForConfiguration()
-                        device.torchMode = flashMode
+                        if flashMode == .on {
+                            try device.setTorchModeOn(level: min(self?.sliderValue ?? 0, AVCaptureDevice.maxAvailableTorchLevel))
+                        } else {
+                            device.torchMode = .off
+                        }
                         device.unlockForConfiguration()
                     } catch {
                         print("Torch could not be used because: \(error.localizedDescription)")

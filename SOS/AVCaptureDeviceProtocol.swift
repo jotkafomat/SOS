@@ -11,6 +11,8 @@ import AVFoundation
 protocol AVCaptureDeviceProtocol: AnyObject {
     var hasTorch: Bool { get }
     var torchMode: AVCaptureDevice.TorchMode { get set }
+    static var maxAvailableTorchLevel: Float { get }
+    func setTorchModeOn(level torchLevel: Float) throws
     func lockForConfiguration() throws
     func unlockForConfiguration()
 }

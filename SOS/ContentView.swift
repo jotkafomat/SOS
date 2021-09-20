@@ -27,6 +27,15 @@ struct ContentView: View {
                     .font(.largeTitle)
                     .foregroundColor(.white)
             })
+            Slider(
+                value: $viewModel.sliderValue,
+                in: 0.1...1,
+                minimumValueLabel: Text("0"),
+                maximumValueLabel: Text("1")
+            ) {
+                EmptyView()
+            }
+            .padding()
         }
     }
 }
