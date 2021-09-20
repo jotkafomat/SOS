@@ -10,7 +10,9 @@ import Combine
 import Foundation
 
 extension ContentView {
-    class ViewModel {
+    class ViewModel: ObservableObject {
+        
+        @Published var titleText: String = "Press to send SOS"
         
         let device: AVCaptureDeviceProtocol?
         private var timerCancellable: AnyCancellable?
@@ -30,14 +32,18 @@ extension ContentView {
         }
                 
         func sendMessage(_ message: [AVCaptureDevice.TorchMode] = sos) {
+            
             let timer = Timer
                 .publish(every: signalLength,tolerance: 0.05 ,on: RunLoop.main, in: .common)
                 .autoconnect()
             timerCancellable = Publishers.Zip(message.publisher, timer)
-                .sink(receiveValue: { [weak self] flashMode, _ in
+                .sink(receiveCompletion: { [weak self]_ in
+                    self?.titleText = "Press to send SOS"
+                },
+                      receiveValue: { [weak self] flashMode, _ in
                     guard let device = self?.device else { return }
                     guard device.hasTorch else { return }
-                    
+                    self?.titleText = "Sending SOS"
                     do {
                         try device.lockForConfiguration()
                         device.torchMode = flashMode

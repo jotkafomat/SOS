@@ -10,11 +10,11 @@ import AVFoundation
 
 struct ContentView: View {
     
-    let viewModel: ContentView.ViewModel
+    @ObservedObject var viewModel: ContentView.ViewModel
     
     var body: some View {
         VStack {
-            Text(Constants.titleText)
+            Text(viewModel.titleText)
                 .foregroundColor(.blue)
                 .font(.title)
             Button(action: {

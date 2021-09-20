@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct SOSApp: App {
     
-    let viewModel = ContentView.ViewModel()
+    @StateObject var viewModel = ContentView.ViewModel()
     
     var body: some Scene {
         WindowGroup {
