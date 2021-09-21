@@ -13,13 +13,7 @@ import XCTest
 class AVCaptureDeviceSpy: AVCaptureDeviceProtocol {
     
     let expectedMessage: [AVCaptureDevice.TorchMode]
-    
     var messageReceived: XCTestExpectation?
-    
-    init(expectedMessage: [AVCaptureDevice.TorchMode]) {
-        self.expectedMessage = expectedMessage
-    }
-    
     private(set) var actualMessage: [AVCaptureDevice.TorchMode] = [] {
         didSet {
             if expectedMessage == actualMessage {
@@ -27,6 +21,8 @@ class AVCaptureDeviceSpy: AVCaptureDeviceProtocol {
             }
         }
     }
+    
+    static var maxAvailableTorchLevel: Float = 1
     
     var hasTorch: Bool {
         true
@@ -37,7 +33,15 @@ class AVCaptureDeviceSpy: AVCaptureDeviceProtocol {
             actualMessage.append(torchMode)
         }
     }
-
+    
+    init(expectedMessage: [AVCaptureDevice.TorchMode]) {
+        self.expectedMessage = expectedMessage
+    }
+    
+    func setTorchModeOn(level torchLevel: Float) throws {
+        torchMode = .on
+    }
+    
     func lockForConfiguration() throws { }
     
     func unlockForConfiguration() { }

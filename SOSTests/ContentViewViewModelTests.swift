@@ -11,7 +11,7 @@ import XCTest
 
 class ContentViewViewModelTests: XCTestCase {
         
-    func testWhenSendMessageCalledWithEmptySequenceCaptureDeviceTorchModeDoesntGetSet() {
+    func testWhenSendMessageCalledWithSequenceCaptureDeviceTorchModeGetSetsToTheSameValuesInOrder() {
         let message = [AVCaptureDevice.TorchMode.on, .off, .on, .on]
         let avCaptureDeviceSpy = AVCaptureDeviceSpy(expectedMessage: message)
         
@@ -22,6 +22,5 @@ class ContentViewViewModelTests: XCTestCase {
         sut.sendMessage(message)
         
         waitForExpectations(timeout: 1)
-        
     }
 }

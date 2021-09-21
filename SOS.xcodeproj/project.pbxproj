@@ -83,14 +83,14 @@
 		E1921DE126F61AEE00EE4D46 /* SOS */ = {
 			isa = PBXGroup;
 			children = (
-				E1921DE226F61AEE00EE4D46 /* SOSApp.swift */,
-				E1921DE426F61AEE00EE4D46 /* ContentView.swift */,
 				E1921DE626F61AEF00EE4D46 /* Assets.xcassets */,
 				E1921DEB26F61AEF00EE4D46 /* Info.plist */,
-				E1921DE826F61AEF00EE4D46 /* Preview Content */,
+				E1921DE226F61AEE00EE4D46 /* SOSApp.swift */,
+				E1921DE426F61AEE00EE4D46 /* ContentView.swift */,
 				E1921DFF26F75B0200EE4D46 /* ContentView + Constant.swift */,
 				E1921E0126F75B5B00EE4D46 /* ContentView + ViewModel.swift */,
 				E1921E0326F75CBD00EE4D46 /* AVCaptureDeviceProtocol.swift */,
+				E1921DE826F61AEF00EE4D46 /* Preview Content */,
 			);
 			path = SOS;
 			sourceTree = "<group>";
@@ -106,9 +106,9 @@
 		E1921DF626F6209000EE4D46 /* SOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				E1921E0926F767B700EE4D46 /* AVCaptureDeviceSpy.swift */,
 				E1921DF726F6209000EE4D46 /* ContentViewViewModelTests.swift */,
 				E1921DF926F6209000EE4D46 /* Info.plist */,
-				E1921E0926F767B700EE4D46 /* AVCaptureDeviceSpy.swift */,
 			);
 			path = SOSTests;
 			sourceTree = "<group>";
